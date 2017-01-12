@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		736C6AA41E27F1FC0027B3B8 /* StringInputValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736C6A9A1E27F1FC0027B3B8 /* StringInputValidator.framework */; };
+		736C6AA91E27F1FC0027B3B8 /* StringInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C6AA81E27F1FC0027B3B8 /* StringInputValidatorTests.swift */; };
+		736C6AAB1E27F1FC0027B3B8 /* StringInputValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 736C6A9D1E27F1FC0027B3B8 /* StringInputValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		736C6AA51E27F1FC0027B3B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 736C6A911E27F1FC0027B3B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 736C6A991E27F1FC0027B3B8;
+			remoteInfo = StringInputValidator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		736C6A9A1E27F1FC0027B3B8 /* StringInputValidator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StringInputValidator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		736C6A9D1E27F1FC0027B3B8 /* StringInputValidator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringInputValidator.h; sourceTree = "<group>"; };
+		736C6A9E1E27F1FC0027B3B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		736C6AA31E27F1FC0027B3B8 /* StringInputValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StringInputValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		736C6AA81E27F1FC0027B3B8 /* StringInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInputValidatorTests.swift; sourceTree = "<group>"; };
+		736C6AAA1E27F1FC0027B3B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		736C6A961E27F1FC0027B3B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		736C6AA01E27F1FC0027B3B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				736C6AA41E27F1FC0027B3B8 /* StringInputValidator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		736C6A901E27F1FC0027B3B8 = {
+			isa = PBXGroup;
+			children = (
+				736C6A9C1E27F1FC0027B3B8 /* StringInputValidator */,
+				736C6AA71E27F1FC0027B3B8 /* StringInputValidatorTests */,
+				736C6A9B1E27F1FC0027B3B8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		736C6A9B1E27F1FC0027B3B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				736C6A9A1E27F1FC0027B3B8 /* StringInputValidator.framework */,
+				736C6AA31E27F1FC0027B3B8 /* StringInputValidatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		736C6A9C1E27F1FC0027B3B8 /* StringInputValidator */ = {
+			isa = PBXGroup;
+			children = (
+				736C6A9D1E27F1FC0027B3B8 /* StringInputValidator.h */,
+				736C6A9E1E27F1FC0027B3B8 /* Info.plist */,
+			);
+			path = StringInputValidator;
+			sourceTree = "<group>";
+		};
+		736C6AA71E27F1FC0027B3B8 /* StringInputValidatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				736C6AA81E27F1FC0027B3B8 /* StringInputValidatorTests.swift */,
+				736C6AAA1E27F1FC0027B3B8 /* Info.plist */,
+			);
+			path = StringInputValidatorTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		736C6A971E27F1FC0027B3B8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				736C6AAB1E27F1FC0027B3B8 /* StringInputValidator.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		736C6A991E27F1FC0027B3B8 /* StringInputValidator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 736C6AAE1E27F1FC0027B3B8 /* Build configuration list for PBXNativeTarget "StringInputValidator" */;
+			buildPhases = (
+				736C6A951E27F1FC0027B3B8 /* Sources */,
+				736C6A961E27F1FC0027B3B8 /* Frameworks */,
+				736C6A971E27F1FC0027B3B8 /* Headers */,
+				736C6A981E27F1FC0027B3B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StringInputValidator;
+			productName = StringInputValidator;
+			productReference = 736C6A9A1E27F1FC0027B3B8 /* StringInputValidator.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		736C6AA21E27F1FC0027B3B8 /* StringInputValidatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 736C6AB11E27F1FC0027B3B8 /* Build configuration list for PBXNativeTarget "StringInputValidatorTests" */;
+			buildPhases = (
+				736C6A9F1E27F1FC0027B3B8 /* Sources */,
+				736C6AA01E27F1FC0027B3B8 /* Frameworks */,
+				736C6AA11E27F1FC0027B3B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				736C6AA61E27F1FC0027B3B8 /* PBXTargetDependency */,
+			);
+			name = StringInputValidatorTests;
+			productName = StringInputValidatorTests;
+			productReference = 736C6AA31E27F1FC0027B3B8 /* StringInputValidatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		736C6A911E27F1FC0027B3B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "RABE_IT Services";
+				TargetAttributes = {
+					736C6A991E27F1FC0027B3B8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					736C6AA21E27F1FC0027B3B8 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 736C6A941E27F1FC0027B3B8 /* Build configuration list for PBXProject "StringInputValidator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 736C6A901E27F1FC0027B3B8;
+			productRefGroup = 736C6A9B1E27F1FC0027B3B8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				736C6A991E27F1FC0027B3B8 /* StringInputValidator */,
+				736C6AA21E27F1FC0027B3B8 /* StringInputValidatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		736C6A981E27F1FC0027B3B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		736C6AA11E27F1FC0027B3B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		736C6A951E27F1FC0027B3B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		736C6A9F1E27F1FC0027B3B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				736C6AA91E27F1FC0027B3B8 /* StringInputValidatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		736C6AA61E27F1FC0027B3B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 736C6A991E27F1FC0027B3B8 /* StringInputValidator */;
+			targetProxy = 736C6AA51E27F1FC0027B3B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		736C6AAC1E27F1FC0027B3B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		736C6AAD1E27F1FC0027B3B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		736C6AAF1E27F1FC0027B3B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = StringInputValidator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		736C6AB01E27F1FC0027B3B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = StringInputValidator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		736C6AB21E27F1FC0027B3B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = StringInputValidatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		736C6AB31E27F1FC0027B3B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = StringInputValidatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		736C6A941E27F1FC0027B3B8 /* Build configuration list for PBXProject "StringInputValidator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				736C6AAC1E27F1FC0027B3B8 /* Debug */,
+				736C6AAD1E27F1FC0027B3B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		736C6AAE1E27F1FC0027B3B8 /* Build configuration list for PBXNativeTarget "StringInputValidator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				736C6AAF1E27F1FC0027B3B8 /* Debug */,
+				736C6AB01E27F1FC0027B3B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		736C6AB11E27F1FC0027B3B8 /* Build configuration list for PBXNativeTarget "StringInputValidatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				736C6AB21E27F1FC0027B3B8 /* Debug */,
+				736C6AB31E27F1FC0027B3B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 736C6A911E27F1FC0027B3B8 /* Project object */;
+}
