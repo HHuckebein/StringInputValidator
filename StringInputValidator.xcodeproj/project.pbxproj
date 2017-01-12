@@ -10,6 +10,7 @@
 		736C6AA41E27F1FC0027B3B8 /* StringInputValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736C6A9A1E27F1FC0027B3B8 /* StringInputValidator.framework */; };
 		736C6AA91E27F1FC0027B3B8 /* StringInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C6AA81E27F1FC0027B3B8 /* StringInputValidatorTests.swift */; };
 		736C6AAB1E27F1FC0027B3B8 /* StringInputValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 736C6A9D1E27F1FC0027B3B8 /* StringInputValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		736C6AB51E27F3160027B3B8 /* StringInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736C6AB41E27F3160027B3B8 /* StringInputValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		736C6AA31E27F1FC0027B3B8 /* StringInputValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StringInputValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		736C6AA81E27F1FC0027B3B8 /* StringInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInputValidatorTests.swift; sourceTree = "<group>"; };
 		736C6AAA1E27F1FC0027B3B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		736C6AB41E27F3160027B3B8 /* StringInputValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringInputValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +55,7 @@
 		736C6A901E27F1FC0027B3B8 = {
 			isa = PBXGroup;
 			children = (
-				736C6A9C1E27F1FC0027B3B8 /* StringInputValidator */,
+				736C6A9C1E27F1FC0027B3B8 /* Sources */,
 				736C6AA71E27F1FC0027B3B8 /* StringInputValidatorTests */,
 				736C6A9B1E27F1FC0027B3B8 /* Products */,
 			);
@@ -68,13 +70,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		736C6A9C1E27F1FC0027B3B8 /* StringInputValidator */ = {
+		736C6A9C1E27F1FC0027B3B8 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				736C6A9D1E27F1FC0027B3B8 /* StringInputValidator.h */,
 				736C6A9E1E27F1FC0027B3B8 /* Info.plist */,
+				736C6A9D1E27F1FC0027B3B8 /* StringInputValidator.h */,
+				736C6AB41E27F3160027B3B8 /* StringInputValidator.swift */,
 			);
-			path = StringInputValidator;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		736C6AA71E27F1FC0027B3B8 /* StringInputValidatorTests */ = {
@@ -148,6 +151,7 @@
 				TargetAttributes = {
 					736C6A991E27F1FC0027B3B8 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					736C6AA21E27F1FC0027B3B8 = {
@@ -196,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				736C6AB51E27F3160027B3B8 /* StringInputValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,17 +325,19 @@
 		736C6AAF1E27F1FC0027B3B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = StringInputValidator/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -338,12 +345,13 @@
 		736C6AB01E27F1FC0027B3B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = StringInputValidator/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidator;
@@ -356,6 +364,7 @@
 		736C6AB21E27F1FC0027B3B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = StringInputValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidatorTests;
@@ -367,6 +376,7 @@
 		736C6AB31E27F1FC0027B3B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = StringInputValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.berndrabe.StringInputValidatorTests;
@@ -394,6 +404,7 @@
 				736C6AB01E27F1FC0027B3B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		736C6AB11E27F1FC0027B3B8 /* Build configuration list for PBXNativeTarget "StringInputValidatorTests" */ = {
 			isa = XCConfigurationList;
@@ -402,6 +413,7 @@
 				736C6AB31E27F1FC0027B3B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
