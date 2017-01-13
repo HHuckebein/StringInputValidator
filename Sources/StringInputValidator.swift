@@ -108,7 +108,7 @@ public struct CompositeValidator: StringValidator {
     
     public var description: String {
         let desc = "\(String(describing: CompositeValidator.self)):"
-        return validators.reduce(desc, { $0 + ", \($1)"})
+        return validators.reduce(desc, { $0 + " \($1),"})
     }
 }
 
