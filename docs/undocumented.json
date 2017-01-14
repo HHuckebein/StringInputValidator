@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/bernd/Documents/iPhoneDev/Projects/Public/StringInputValidator/Sources/StringInputValidator.swift",
+      "line": 80,
+      "symbol": "ValidatorResult",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/bernd/Documents/iPhoneDev/Projects/Public/StringInputValidator/Sources/StringInputValidator.swift",
+      "line": 260,
+      "symbol": "NotEmptyValidator.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/bernd/Documents/iPhoneDev/Projects/Public/StringInputValidator"
+}
