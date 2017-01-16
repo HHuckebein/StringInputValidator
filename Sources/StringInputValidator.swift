@@ -95,6 +95,37 @@ public enum ValidatorResult {
         case .invalid(error: _): return false
         }
     }
+
+    /** Returns wether the validation result contains .empty
+    */
+    public var isEmpty: Bool {
+        return checkContainment(for: .empty, checkAgainst: true)
+    }
+
+    /** Returns wether the validation result contains .lengthExceeded.
+     */
+    public var hasMaxLengthExceeded: Bool {
+        return checkContainment(for: .lengthExceeded, checkAgainst: true)
+    }
+
+    /** Returns wether the validation result contains .lengthMismatch.
+     */
+    public var hasLengthMismatch: Bool {
+        return checkContainment(for: .lengthMismatch, checkAgainst: true)
+    }
+
+    /** Returns wether the validation result contains .lengthMismatch.
+     */
+    public var containsOnlyValidCharacters: Bool {
+        return checkContainment(for: .invalidFormat, checkAgainst: false)
+    }
+    
+    private func checkContainment(for error: ValidatorError, checkAgainst condition: Bool) -> Bool {
+        switch self {
+        case .valid: return !condition
+        case .invalid(error: let error): return error.contains(error) == condition
+        }
+    }
 }
 
 /** StringValidator Protocol. */

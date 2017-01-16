@@ -19,25 +19,14 @@ class StringInputValidatorTests: XCTestCase {
         
         let res = sut.validate(value: "")
         XCTAssertFalse(res.isValid)
-        if case let .invalid(error) = res {
-            XCTAssert(error.contains(.empty))
-            XCTAssert(error.contains(.lengthMismatch))
-        } else {
-            XCTFail("Expected .invalid")
-        }
+        XCTAssertTrue(res.isEmpty)
+        XCTAssertTrue(res.hasLengthMismatch)
 
         let numVal = RegularExpressionValidator.numeric
         let sut1 = CompositeValidator(validators: numVal, sut)
         let res2 = sut1.validate(value: "absdefgh")
         XCTAssertFalse(res2.isValid)
-        if case let .invalid(error) = res2 {
-            XCTAssert(error.contains(.invalidFormat))
-            XCTAssert(error.contains(.lengthExceeded))
-            print(error.description)
-            XCTAssertTrue(error.description == "[InvalidFormat, LengthExceeded, LengthMismatch]")
-        } else {
-            XCTFail("Expected .invalid")
-        }
+        XCTAssertFalse(res2.containsOnlyValidCharacters)
     }
     
     func test_CompositeValidator_Success() {
@@ -65,12 +54,7 @@ class StringInputValidatorTests: XCTestCase {
         XCTAssert(numericValidator.validate(value: nil).isValid == false)
         
         let result = numericValidator.validate(value: "01x234")
-        XCTAssert(result.isValid == false)
-        if case let .invalid(error) = result {
-            XCTAssert(error == .invalidFormat)
-        } else {
-            XCTFail("Expected .invalid")
-        }
+        XCTAssertFalse(result.containsOnlyValidCharacters)
     }
 
     func test_RegularExpressionValidator_EquatableConformance() {
@@ -129,23 +113,15 @@ class StringInputValidatorTests: XCTestCase {
         
         let res = sut.validate(value: "0123456789")
         
-        if case let .invalid(error) = res {
-            XCTAssertTrue(error.contains(.lengthMismatch) == true)
-            XCTAssertTrue(error.contains(.lengthExceeded) == true)
-        } else {
-            XCTFail("Expected .invalid with")
-        }
+        XCTAssertTrue(res.hasLengthMismatch)
+        XCTAssertTrue(res.hasMaxLengthExceeded)
     }
     
     func test_LengthValidator_invalid_LengthMismatch() {
         let sut = LengthValidator(lengthLimit: 5)
         
         let res = sut.validate(value: "")
-        if case let .invalid(error) = res {
-            XCTAssertTrue(error.contains(.lengthMismatch) == true)
-        } else {
-            XCTFail("Expected .invalid")
-        }
+        XCTAssertTrue(res.hasLengthMismatch)
     }
     
     func test_LengthValidator_EquatableConformance() {
