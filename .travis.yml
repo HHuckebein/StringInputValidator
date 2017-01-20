@@ -1,30 +1,28 @@
 language: objective-c
 osx_image: xcode8.1
-
 env:
-   global:
+  global:
+  - PROJECT="StringInputValidator.xcodeproj"
+  - IOS_SCHEME="StringInputValidator"
+  - IOS_SDK=iphonesimulator10.1
+  matrix:
+  - DESTINATION="OS=10.0,name=iPhone 6s" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+  - DESTINATION="OS=10.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
 
-   - PROJECT="StringInputValidator.xcodeproj"
-   - IOS_SCHEME="StringInputValidator"
-   - IOS_SDK=iphonesimulator10.1
-
-   matrix:
-   - DESTINATION="OS=10.0,name=iPhone 6s" SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
-   - DESTINATION="OS=10.1,name=iPhone 7"  SDK="$IOS_SDK" SCHEME="$IOS_SCHEME" RUN_TESTS="YES"
+notifications:
+  slack:
+    rooms:
+      secure: TSLDfopFEoObXSDtm8Q53P8KjOWik9YveUHCqUQlYVTjxA48dOemIKDeTvaEyNQ7oUi7UwfF0mQqTh6dnVG01oEi3upWvYvEIWkU0kXKUEYhRgqvB5L0HJjYOwf+YFbdePv4/x6qdoNDBD8ST2W/z92fNqCMb6oiWRuxU/wXZEAoIiEFVaeLAJUWTaGxh9+WX4W5Pa/O99YyQZTJPWepA+wmZfqZUy5KxklL8T7h2mDtM+gYWBRrRdy/qORmcz18ncIEKvVEEYNjaL6Hz1a59vMMwru+PF42Rl1MpNr0Y+gvvbtpOrBy4mpW8NsXybd7IrIbKMUZ9PF8mQ1R1GD4or0UGvFv/u8Pst8cHjBfDe4VhgRsfoWxl4H0bb1d5JZuZ9itwpU+0lHgb8IvJJwugKq+iVkXAZzpcjbDFnVgCRSi13FALi9sqsChSZpjb/enUpSqji1/DSMVXcTu13zuEJnNCLEMHu45zzjcher04U68ztblXeY/XWJ2EQDDhnUYyUvnhvoOyTP7giqXBqJRBFLBKYgmbqM8XH5OMacbPMuuUYOxwdiXQyS5cChd5FloTFxhZXqakRKPv3oQxZcGA1hLcPThrBuwXfGbZLBZ1YFFzFoEZ9ByuzuXPt7KJ8Jqdge3+z5IMc/jlpfQ0HnVyJJSvbsRn8tIgwBP/kTRMK0=
 
 script:
 - set -o pipefail
-
-- if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild analyze test -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
-  else
-      xcodebuild build analyze -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO | xcpretty -c;
-  fi
-
-# Build for reporting test coverage
-- if [ $RUN_TESTS == "YES" ]; then
-      xcodebuild test -project StringInputValidator.xcodeproj -scheme StringInputValidator -destination "platform=iOS Simulator,name=iPhone 7" CODE_SIGNING_REQUIRED=NO | xcpretty -c;
-  fi
-
+- if [ $RUN_TESTS == "YES" ]; then xcodebuild analyze test -project "$PROJECT" -scheme
+  "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
+  CODE_SIGNING_REQUIRED=NO | xcpretty -c; else xcodebuild build analyze -project "$PROJECT"
+  -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO
+  CODE_SIGNING_REQUIRED=NO | xcpretty -c; fi
+- if [ $RUN_TESTS == "YES" ]; then xcodebuild test -project StringInputValidator.xcodeproj
+  -scheme StringInputValidator -destination "platform=iOS Simulator,name=iPhone 7"
+  CODE_SIGNING_REQUIRED=NO | xcpretty -c; fi
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
