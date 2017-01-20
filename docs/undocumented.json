@@ -9,7 +9,7 @@
     },
     {
       "file": "/Users/bernd/Documents/iPhoneDev/Projects/Public/StringInputValidator/Sources/StringInputValidator.swift",
-      "line": 260,
+      "line": 291,
       "symbol": "NotEmptyValidator.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

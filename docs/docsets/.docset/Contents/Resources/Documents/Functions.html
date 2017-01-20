@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Structs  Reference</title>
+    <title>Functions  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,18 +10,18 @@
     
   </head>
   <body>
-    <a title="Structs  Reference"></a>
+    <a title="Functions  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">StringInputValidator Docs</a> (94% documented)</p>
+        <p><a href="index.html"> Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/HHuckebein/StringInputValidator.git"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="index.html">StringInputValidator Reference</a>
+        <a href="index.html"> Reference</a>
         <img id="carat" src="img/carat.png" />
-        Structs  Reference
+        Functions  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -82,76 +82,11 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Structs</h1>
-            <p>The following structs are available globally.</p>
+            <h1>Functions</h1>
+            <p>The following functions are available globally.</p>
 
           </section>
           <section class="section task-group-section">
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V20StringInputValidator14ValidatorError"></a>
-                    <a name="//apple_ref/swift/Struct/ValidatorError" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V20StringInputValidator14ValidatorError">ValidatorError</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>ValidatorError is formed as OptionSetType to be able to report multiple 
- validation results.</p>
-
-<p><strong>When you extend it, provide additional enum and description values for debugging purposes.</strong></p>
-
-                        <a href="Structs/ValidatorError.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ValidatorError</span><span class="p">:</span> <span class="kt">OptionSet</span><span class="p">,</span> <span class="kt">CustomStringConvertible</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:V20StringInputValidator18CompositeValidator"></a>
-                    <a name="//apple_ref/swift/Struct/CompositeValidator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V20StringInputValidator18CompositeValidator">CompositeValidator</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A CompositeValidator allows for chaining or nesting of
- several validators. Individual validators can add their own
- .invalid error to the total result.</p>
-
-                        <a href="Structs/CompositeValidator.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">CompositeValidator</span><span class="p">:</span> <span class="kt"><a href="Protocols/StringValidator.html">StringValidator</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
             <div class="task-group">
               <div class="task-name-container">
                 <a name="/LengthValidator"></a>
@@ -164,9 +99,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:V20StringInputValidator15LengthValidator"></a>
-                    <a name="//apple_ref/swift/Struct/LengthValidator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V20StringInputValidator15LengthValidator">LengthValidator</a>
+                    <a name="/s:F20StringInputValidatoroi2eeFTVS_15LengthValidatorS0__Sb"></a>
+                    <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F20StringInputValidatoroi2eeFTVS_15LengthValidatorS0__Sb">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -174,20 +109,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>LengthValidator can return several results, e.g.
- for cases where the characters count is greater than zero
-* .lengthMismatch - if the count is unequal to lengthBorder
-* .lengthExceeded - if the count is greater than lengthBorder</p>
+                        <p>Equatable conformance</p>
 
-<p>The last two ValidatorResults might appear in combination.</p>
-
-                        <a href="Structs/LengthValidator.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">LengthValidator</span><span class="p">:</span> <span class="kt"><a href="Protocols/StringValidator.html">StringValidator</a></span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Structs/LengthValidator.html">LengthValidator</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Structs/LengthValidator.html">LengthValidator</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -208,9 +137,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:V20StringInputValidator26RegularExpressionValidator"></a>
-                    <a name="//apple_ref/swift/Struct/RegularExpressionValidator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V20StringInputValidator26RegularExpressionValidator">RegularExpressionValidator</a>
+                    <a name="/s:F20StringInputValidatoroi2eeFTVS_26RegularExpressionValidatorS0__Sb"></a>
+                    <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F20StringInputValidatoroi2eeFTVS_26RegularExpressionValidatorS0__Sb">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,16 +147,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Create a RegularExpressionStringValidator with a regular expression pattern.
- There are some predefined validators available in the extension.</p>
+                        <p>Equatable conformance</p>
 
-                        <a href="Structs/RegularExpressionValidator.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">RegularExpressionValidator</span><span class="p">:</span> <span class="kt"><a href="Protocols/StringValidator.html">StringValidator</a></span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Structs/RegularExpressionValidator.html">RegularExpressionValidator</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Structs/RegularExpressionValidator.html">RegularExpressionValidator</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -248,9 +175,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:V20StringInputValidator17NotEmptyValidator"></a>
-                    <a name="//apple_ref/swift/Struct/NotEmptyValidator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:V20StringInputValidator17NotEmptyValidator">NotEmptyValidator</a>
+                    <a name="/s:F20StringInputValidatoroi2eeFTVS_17NotEmptyValidatorS0__Sb"></a>
+                    <a name="//apple_ref/swift/Function/==(_:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:F20StringInputValidatoroi2eeFTVS_17NotEmptyValidatorS0__Sb">==(_:_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -258,15 +185,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Check wether a string exists and is not empty.</p>
+                        <p>Equatable conformance</p>
 
-                        <a href="Structs/NotEmptyValidator.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">NotEmptyValidator</span><span class="p">:</span> <span class="kt"><a href="Protocols/StringValidator.html">StringValidator</a></span><span class="p">,</span> <span class="kt">Equatable</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="o">==</span><span class="p">(</span><span class="nv">lhs</span><span class="p">:</span> <span class="kt"><a href="Structs/NotEmptyValidator.html">NotEmptyValidator</a></span><span class="p">,</span> <span class="nv">rhs</span><span class="p">:</span> <span class="kt"><a href="Structs/NotEmptyValidator.html">NotEmptyValidator</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>

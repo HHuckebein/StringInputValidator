@@ -7,8 +7,8 @@
 //
 
 import Foundation
- 
-/** ValidatorError is formed as OptionSetType to be able to report multiple 
+
+/** ValidatorError is formed as OptionSetType to be able to report multiple
  validation results.
  
  **When you extend it, provide additional enum and description values for debugging purposes.**
@@ -17,13 +17,13 @@ public struct ValidatorError: OptionSet, CustomStringConvertible {
     private enum ValidatorErrorEnum : Int, CustomStringConvertible {
         /** The corresponding enum for the invalidFormat error. */
         case invalidFormat  = 1
-
+        
         /** The corresponding enum for the lengthExceeded error. */
         case lengthExceeded = 2
-
+        
         /** The corresponding enum for the invalidemptyStringFormat error. */
         case emptyString    = 4
-
+        
         /** The corresponding enum for the lengthMismatch error. */
         case lengthMismatch = 8
         
@@ -51,16 +51,16 @@ public struct ValidatorError: OptionSet, CustomStringConvertible {
     
     /** Returned by `RegularExpressionValidator` if input string does not conform to the regex pattern. */
     public static let invalidFormat = ValidatorError(rawValue:  1 << 0)
-
+    
     /** Returned by `LengthValidator` characters count is greater than `lengthLimit`. */
     public static let lengthExceeded = ValidatorError(rawValue:  1 << 1)
-
+    
     /** Returned by `LengthValidator` if characters count is unequal to `lengthLimit`. */
     public static let lengthMismatch = ValidatorError(rawValue:  1 << 3)
     
     /** Returned by `NotEmptyValidator` if validation fails. */
     public static let empty = ValidatorError(rawValue:  1 << 2)
-
+    
     /** CustomStringConvertible conformance */
     public var description: String {
         var result = ""
@@ -76,7 +76,7 @@ public struct ValidatorError: OptionSet, CustomStringConvertible {
         return "[\(result)]"
     }
 }
- 
+
 public enum ValidatorResult {
     /** Return if validation succeeds. */
     case valid
@@ -95,25 +95,25 @@ public enum ValidatorResult {
         case .invalid(error: _): return false
         }
     }
-
+    
     /** Returns wether the validation result contains .empty
-    */
+     */
     public var isEmpty: Bool {
         return checkContainment(for: .empty, checkAgainst: true)
     }
-
+    
     /** Returns wether the validation result contains .lengthExceeded.
      */
     public var hasMaxLengthExceeded: Bool {
         return checkContainment(for: .lengthExceeded, checkAgainst: true)
     }
-
+    
     /** Returns wether the validation result contains .lengthMismatch.
      */
     public var hasLengthMismatch: Bool {
         return checkContainment(for: .lengthMismatch, checkAgainst: true)
     }
-
+    
     /** Returns wether the validation result contains .lengthMismatch.
      */
     public var containsOnlyValidCharacters: Bool {
@@ -130,12 +130,12 @@ public enum ValidatorResult {
 
 /** StringValidator Protocol. */
 public protocol StringValidator: CustomStringConvertible {
-/** The validation function every validator has to implement.
+    /** The validation function every validator has to implement.
      
-- parameter value: An optional input string.
-- returns: An option set of type `ValidatorResult`.
- In case of a non existing `value` returns .empty.
-*/
+     - parameter value: An optional input string.
+     - returns: An option set of type `ValidatorResult`.
+     In case of a non existing `value` returns .empty.
+     */
     func validate(value string: String?) -> ValidatorResult
 }
 
@@ -179,22 +179,22 @@ public struct CompositeValidator: StringValidator {
 
 /** LengthValidator can return several results, e.g.
  for cases where the characters count is greater than zero
-* .lengthMismatch - if the count is unequal to lengthBorder
-* .lengthExceeded - if the count is greater than lengthBorder
+ * .lengthMismatch - if the count is unequal to lengthBorder
+ * .lengthExceeded - if the count is greater than lengthBorder
  
  The last two ValidatorResults might appear in combination.
  */
 public struct LengthValidator: StringValidator, Equatable {
     let lengthLimit: Int
     
-    /** Validate the string for, wether characters count 
+    /** Validate the string for, wether characters count
      matches or exceeds the lengthLimit.
      */
     public func validate(value string: String?) -> ValidatorResult {
         guard let text = string else {
             return .invalid(error: .lengthMismatch)
         }
- 
+        
         let count = text.characters.count
         if count > lengthLimit {
             return .invalid(error: [.lengthExceeded, .lengthMismatch])
@@ -205,11 +205,11 @@ public struct LengthValidator: StringValidator, Equatable {
         }
     }
     
-/** Lengthvalidator initializer.
+    /** Lengthvalidator initializer.
      
-- parameter lengthLimit: Marks the maximum acceptable length
+     - parameter lengthLimit: Marks the maximum acceptable length
      before the validator returns a .lengthExceeded validation result.
-*/
+     */
     public init(lengthLimit: Int) {
         self.lengthLimit = lengthLimit
     }
@@ -219,26 +219,26 @@ public struct LengthValidator: StringValidator, Equatable {
         return "LengthLimit: \(lengthLimit)"
     }
 }
- 
+
 /** Equatable conformance */
 public func ==(lhs: LengthValidator, rhs: LengthValidator) -> Bool {
     return lhs.lengthLimit == rhs.lengthLimit
 }
- 
+
 // MARK: - RegularExpressionValidator's
 
 /** Create a RegularExpressionStringValidator with a regular expression pattern.
  There are some predefined validators available in the extension.
  */
- 
+
 public struct RegularExpressionValidator: StringValidator, Equatable {
     let regex: NSRegularExpression
     
-/** RegularExpression Validators return nil if the pattern can not
+    /** RegularExpression Validators return nil if the pattern can not
      be transformed into a valid regular expression.
      
-- parameter pattern: The reqular expression pattern.
- */
+     - parameter pattern: The reqular expression pattern.
+     */
     public init?(withPattern pattern: String) {
         do {
             regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options())
@@ -253,7 +253,7 @@ public struct RegularExpressionValidator: StringValidator, Equatable {
         guard let text = string else {
             return .invalid(error: .invalidFormat)
         }
- 
+        
         let numberOfMatches = regex.numberOfMatches(in: text, options: .anchored, range: NSMakeRange(0, text.characters.count))
         if text.characters.count > 0 && numberOfMatches == 0 {
             return .invalid(error: .invalidFormat)
@@ -272,7 +272,7 @@ public struct RegularExpressionValidator: StringValidator, Equatable {
 public func ==(lhs: RegularExpressionValidator, rhs: RegularExpressionValidator) -> Bool {
     return lhs.regex.pattern == rhs.regex.pattern
 }
- 
+
 // MARK: Preconfigured RegularExpressionValidator's
 
 public extension RegularExpressionValidator {
@@ -282,7 +282,7 @@ public extension RegularExpressionValidator {
     /** An Inputvalidator which checks for numbers and characters ranging from a-z/A-Z only. */
     public static var alphaNumeric = RegularExpressionValidator(withPattern: "^[0-9a-zA-Z]*$")!
 }
- 
+
 // MARK: - NotEmptyValidator
 
 /** Check wether a string exists and is not empty. */
