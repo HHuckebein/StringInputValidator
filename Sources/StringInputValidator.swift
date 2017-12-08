@@ -254,8 +254,8 @@ public struct RegularExpressionValidator: StringValidator, Equatable {
             return .invalid(error: .invalidFormat)
         }
         
-        let numberOfMatches = regex.numberOfMatches(in: text, options: .anchored, range: NSMakeRange(0, text.characters.count))
-        if text.characters.count > 0 && numberOfMatches == 0 {
+        let numberOfMatches = regex.numberOfMatches(in: text, options: .anchored, range: NSMakeRange(0, text.count))
+        if text.count > 0 && numberOfMatches == 0 {
             return .invalid(error: .invalidFormat)
         } else {
             return .valid
