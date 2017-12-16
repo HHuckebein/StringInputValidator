@@ -195,7 +195,7 @@ public struct LengthValidator: StringValidator, Equatable {
             return .invalid(error: .lengthMismatch)
         }
         
-        let count = text.characters.count
+        let count = text.count
         if count > lengthLimit {
             return .invalid(error: [.lengthExceeded, .lengthMismatch])
         } else if count != lengthLimit {
