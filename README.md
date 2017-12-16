@@ -4,10 +4,9 @@
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![codecov](https://codecov.io/gh/HHuckebein/StringInputValidator/branch/master/graph/badge.svg)](https://codecov.io/gh/HHuckebein/StringInputValidator)
  
-StringInputValidator encoding/decoding.
-Provides .urlSafe/.standard (iOS compatible) encoding of type Data and decoding of type String.
-You can, when encoding, ask for padding.
-When decoding padding is ignored if you choose .urlSafe decoding.
+StringInputValidator provides a convenient way to test a given string against a validator.
+A validator can be as simple the RegularExpressionValidator.numeric which checks wether the string contains numeric values only. Or a complex
+validator if you combine length/format validation using a composite validator.
  
 ## How to use StringInputValidator
 ```swift
