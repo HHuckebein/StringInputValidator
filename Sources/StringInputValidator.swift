@@ -128,6 +128,16 @@ public enum ValidatorResult {
     }
 }
 
+extension ValidatorResult: Equatable {
+    public static func == (lhs: ValidatorResult, rhs: ValidatorResult) -> Bool {
+        switch (lhs, rhs) {
+        case (.valid, .valid): return true
+        case (.invalid(error: let error1), .invalid(error: let error2)): return error1 == error2
+        default: return false
+        }
+    }
+}
+
 /** StringValidator Protocol. */
 public protocol StringValidator: CustomStringConvertible {
     /** The validation function every validator has to implement.
