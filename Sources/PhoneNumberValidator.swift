@@ -16,12 +16,12 @@ public struct PhoneNumberValidator: StringValidator {
     ///
     /// - Parameter string: input string
     /// - Returns: Validation result.
-    public func validate(value string: String?) -> ValidatorResult {
+    public func validate(value string: String?) -> ValidationResult {
         guard let string = string, string.isEmpty == false else { return .invalid(error: .empty) }
         
         let detector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
         if let matches = detector?.numberOfMatches(in: string, options: .anchored, range: NSRange(location: 0, length: string.count)), matches == 1 {
-            return .valid
+            return .valid(result: nil)
         } else {
             return .invalid(error: .invalidFormat)
         }

@@ -8,13 +8,13 @@
 
 import Foundation
 
-/** ValidatorError is formed as OptionSetType to be able to report multiple
+/** ValidatorResult is formed as OptionSetType to be able to report multiple
  validation results.
  
  **When you extend it, provide additional enum and description values for debugging purposes.**
  */
-public struct ValidatorError: OptionSet, CustomStringConvertible {
-    private enum ValidatorErrorEnum : Int, CustomStringConvertible {
+public struct ValidatorResult: OptionSet, CustomStringConvertible {
+    private enum ValidatorResultEnum : Int, CustomStringConvertible {
         /** The corresponding enum for the invalidFormat error. */
         case invalidFormat  = 1
         
@@ -37,7 +37,7 @@ public struct ValidatorError: OptionSet, CustomStringConvertible {
         }
     }
     
-    private init(_ validatorErrorEnum: ValidatorErrorEnum) {
+    private init(_ validatorErrorEnum: ValidatorResultEnum) {
         self.rawValue = validatorErrorEnum.rawValue
     }
     
@@ -50,25 +50,25 @@ public struct ValidatorError: OptionSet, CustomStringConvertible {
     public let rawValue: Int
     
     /** Returned by `RegularExpressionValidator` if input string does not conform to the regex pattern. */
-    public static let invalidFormat = ValidatorError(rawValue:  1 << 0)
+    public static let invalidFormat = ValidatorResult(rawValue:  1 << 0)
     
     /** Returned by `LengthValidator` characters count is greater than `lengthLimit`. */
-    public static let lengthExceeded = ValidatorError(rawValue:  1 << 1)
+    public static let lengthExceeded = ValidatorResult(rawValue:  1 << 1)
     
     /** Returned by `LengthValidator` if characters count is unequal to `lengthLimit`. */
-    public static let lengthMismatch = ValidatorError(rawValue:  1 << 3)
+    public static let lengthMismatch = ValidatorResult(rawValue:  1 << 3)
     
     /** Returned by `NotEmptyValidator` if validation fails. */
-    public static let empty = ValidatorError(rawValue:  1 << 2)
+    public static let empty = ValidatorResult(rawValue:  1 << 2)
     
     /** CustomStringConvertible conformance */
     public var description: String {
         var result = ""
         var shift = 0
         
-        while let value = ValidatorErrorEnum(rawValue: 1 << shift) {
+        while let value = ValidatorResultEnum(rawValue: 1 << shift) {
             shift += 1
-            if contains(ValidatorError(value)) {
+            if contains(ValidatorResult(value)) {
                 result += result.isEmpty ? "\(value)" : ", \(value)"
             }
         }
@@ -77,14 +77,14 @@ public struct ValidatorError: OptionSet, CustomStringConvertible {
     }
 }
 
-public enum ValidatorResult {
+public enum ValidationResult {
     /** Return if validation succeeds. */
-    case valid
+    case valid(result: ValidatorResult?)
     
     /** If validation fails for one of the validators.
      Associated value is `ValidatorError`
      */
-    case invalid(error: ValidatorError)
+    case invalid(error: ValidatorResult)
     
     /** Convenience function to check wether
      the string is valid according to the validators assigned.
@@ -120,18 +120,23 @@ public enum ValidatorResult {
         return checkContainment(for: .invalidFormat, checkAgainst: false)
     }
     
-    private func checkContainment(for error: ValidatorError, checkAgainst condition: Bool) -> Bool {
+    private func checkContainment(for error: ValidatorResult, checkAgainst condition: Bool) -> Bool {
         switch self {
-        case .valid: return !condition
+        case .valid(let result):
+            if let result = result {
+                return result.contains(result) == condition
+            } else {
+                return !condition
+            }
         case .invalid(error: let error): return error.contains(error) == condition
         }
     }
 }
 
-extension ValidatorResult: Equatable {
-    public static func == (lhs: ValidatorResult, rhs: ValidatorResult) -> Bool {
+extension ValidationResult: Equatable {
+    public static func == (lhs: ValidationResult, rhs: ValidationResult) -> Bool {
         switch (lhs, rhs) {
-        case (.valid, .valid): return true
+        case (.valid(let result1), .valid(let result2)): return result1 == result2
         case (.invalid(error: let error1), .invalid(error: let error2)): return error1 == error2
         default: return false
         }
@@ -146,7 +151,7 @@ public protocol StringValidator: CustomStringConvertible {
      - returns: An option set of type `ValidatorResult`.
      In case of a non existing `value` returns .empty.
      */
-    func validate(value string: String?) -> ValidatorResult
+    func validate(value string: String?) -> ValidationResult
 }
 
 /** A CompositeValidator allows for chaining or nesting of
@@ -165,17 +170,25 @@ public struct CompositeValidator: StringValidator {
      Individual results will be added. Independent of a single result
      all validators will be asked to return their validation result.
      */
-    public func validate(value string: String?) -> ValidatorResult {
-        var validatorResult = ValidatorError()
-        
+    public func validate(value string: String?) -> ValidationResult {
+        var combinedValidatorResultError = ValidatorResult()
+        var combinedValidatorResultSuccess = ValidatorResult()
+
         for validator in validators {
             switch validator.validate(value: string) {
-            case .valid: continue
-            case .invalid(let error): validatorResult.insert(error)
+            case .valid(let result):
+                if let result = result {
+                    combinedValidatorResultSuccess.insert(result)
+                }
+            case .invalid(let error): combinedValidatorResultError.insert(error)
             }
         }
         
-        return  validatorResult.rawValue > 0 ? .invalid(error: validatorResult) : .valid
+        if combinedValidatorResultError.rawValue > 0 {
+            return .invalid(error: combinedValidatorResultError)
+        } else {
+            return .valid(result: combinedValidatorResultSuccess.rawValue > 0 ? combinedValidatorResultSuccess : nil)
+        }
     }
     
     /** CustomStringConvertible conformance */
@@ -200,7 +213,7 @@ public struct LengthValidator: StringValidator, Equatable {
     /** Validate the string for, wether characters count
      matches or exceeds the lengthLimit.
      */
-    public func validate(value string: String?) -> ValidatorResult {
+    public func validate(value string: String?) -> ValidationResult {
         guard let text = string else {
             return .invalid(error: .lengthMismatch)
         }
@@ -209,9 +222,9 @@ public struct LengthValidator: StringValidator, Equatable {
         if count > lengthLimit {
             return .invalid(error: [.lengthExceeded, .lengthMismatch])
         } else if count != lengthLimit {
-            return .invalid(error: .lengthMismatch)
+            return .valid(result: .lengthMismatch)
         } else {
-            return .valid
+            return .valid(result: nil)
         }
     }
     
@@ -259,7 +272,7 @@ public struct RegularExpressionValidator: StringValidator, Equatable {
     }
     
     /** Validates the string according to the pattern. */
-    public func validate(value string: String?) -> ValidatorResult {
+    public func validate(value string: String?) -> ValidationResult {
         guard let text = string else {
             return .invalid(error: .invalidFormat)
         }
@@ -268,7 +281,7 @@ public struct RegularExpressionValidator: StringValidator, Equatable {
         if text.count > 0 && numberOfMatches == 0 {
             return .invalid(error: .invalidFormat)
         } else {
-            return .valid
+            return .valid(result: nil)
         }
     }
     
@@ -301,9 +314,9 @@ public struct NotEmptyValidator: StringValidator, Equatable {
     public init() {}
     
     /** Returns .empty if the string is nil or contains no character. */
-    public func validate(value string: String?) -> ValidatorResult {
+    public func validate(value string: String?) -> ValidationResult {
         if let text = string, text.isEmpty == false {
-            return .valid
+            return .valid(result: nil)
         } else {
             return .invalid(error: .empty)
         }

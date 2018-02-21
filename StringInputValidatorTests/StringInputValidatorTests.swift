@@ -47,7 +47,7 @@ class StringInputValidatorTests: XCTestCase {
         XCTAssertTrue(sut.description == "CompositeValidator: LengthLimit: 5, NotEmpty,")
     }
 
-    func test_ValidatorDescription() {
+    func test_ValidatorDescription_Invalid() {
         let lengthVal = LengthValidator(lengthLimit: 5)
         let emptyVal = NotEmptyValidator()
         let numVal = RegularExpressionValidator.numeric
@@ -57,12 +57,37 @@ class StringInputValidatorTests: XCTestCase {
         
         if case .invalid(let error) = res {
             let desc = error.description
-            XCTAssertTrue(desc == "[EmptyString, LengthMismatch]")
+            XCTAssertTrue(desc == "[EmptyString]")
         } else {
             XCTFail("Expected failing result")
         }
-
     }
+    
+    func test_ValidatorDescription_Valid() {
+        let lengthVal = LengthValidator(lengthLimit: 5)
+        let emptyVal = NotEmptyValidator()
+        let numVal = RegularExpressionValidator.numeric
+        
+        let sut = CompositeValidator(validators: lengthVal, emptyVal, numVal)
+        var res = sut.validate(value: "01234")
+        
+        if case .valid(let result) = res {
+            let desc = result?.description
+            XCTAssertNil(desc)
+        } else {
+            XCTFail("Expected valid result")
+        }
+
+        res = sut.validate(value: "0123")
+        
+        if case .valid(let result) = res {
+            let desc = result?.description
+            XCTAssertTrue(desc == "[LengthMismatch]")
+        } else {
+            XCTFail("Expected valid result")
+        }
+    }
+
     // MARK: - RegularExpressionValidator
     
     func test_NumericStringValidator() {

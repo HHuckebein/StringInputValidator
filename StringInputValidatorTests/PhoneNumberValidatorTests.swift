@@ -11,13 +11,24 @@ import XCTest
 
 class PhoneNumberValidatorTests: XCTestCase {
     func test_PhoneNumberValidator() {
-        let numbers: [String?] = ["+49 89 123456", "0 30 / 12 34 56", "01 58058-0", "+43 1 58058-0", "+49 (30) 12345 - 67", "+49 89 123456 0", "+49 89 123456 123", "0049 89 1234567", "(042) 123 4567", "+31 42 123 4567", "😩🤬", "", nil]
-        let result: [ValidatorResult] = [.valid, .valid, .valid, .valid, .valid, .valid, .valid, .valid, .valid, .valid, .invalid(error: .invalidFormat), .invalid(error: .empty), .invalid(error: .empty)]
+        let tests: [String: ValidationResult] = ["+49 89 123456": .valid(result: nil),
+                                                  "0 30 / 12 34 56": .valid(result: nil),
+                                                  "01 58058-0": .valid(result: nil),
+                                                  "+43 1 58058-0": .valid(result: nil),
+                                                  "+49 (30) 12345 - 67": .valid(result: nil),
+                                                  "+49 89 123456 0": .valid(result: nil),
+                                                  "+49 89 123456 123": .valid(result: nil),
+                                                  "0049 89 1234567": .valid(result: nil),
+                                                  "(042) 123 4567": .valid(result: nil),
+                                                  "+31 42 123 4567": .valid(result: nil),
+                                                  "😩🤬": .invalid(error: .invalidFormat),
+                                                  "": .invalid(error: .empty)]
         let validator = PhoneNumberValidator()
         
-        for (index, number) in numbers.enumerated() {
-            let validationResult = validator.validate(value: number)
-            XCTAssertEqual(validationResult, result[index])
+        for (test, result) in tests {
+            let validationResult = validator.validate(value: test)
+            XCTAssertEqual(validationResult, result)
         }
+        XCTAssertEqual(.invalid(error: .empty), validator.validate(value: nil))
     }
 }
