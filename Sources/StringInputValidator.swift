@@ -91,8 +91,8 @@ public enum ValidationResult {
      */
     public var isValid: Bool {
         switch self {
-        case .valid:             return true
-        case .invalid(error: _): return false
+        case .valid: return true
+        case .invalid: return false
         }
     }
     
